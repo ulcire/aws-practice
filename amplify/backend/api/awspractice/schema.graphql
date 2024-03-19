@@ -7,19 +7,28 @@ type Event
   @model
   @auth(
     rules: [
+      # Owner CRUD access
       {
         allow: owner
         ownerField: "creatorId"
-        operations: [create, read, update]
+        operations: [create, read, update, delete]
       }
-      { allow: groups, groups: ["Admins"], operations: [update, delete] }
+      # Admin CRUD access
+      {
+        allow: groups
+        groups: ["Admins"]
+        operations: [create, read, update, delete]
+      }
+      # Read access to everyone else
+      { allow: public, operations: [read] }
     ]
   ) {
   id: ID!
   title: String!
   content: String!
   status: EventStatus!
-  creator: User! @belongsTo
+  type: EventType!
+  creator: User @belongsTo
 }
 
 type User
@@ -35,12 +44,38 @@ type User
     ]
   ) {
   id: ID!
-  name: String!
+  username: String!
   events: [Event] @hasMany
+}
+
+type ShowcasedEvent
+  @model
+  @auth(
+    rules: [
+      # Admins CRUD access
+      {
+        allow: groups
+        groups: ["Admins"]
+        operations: [create, read, update, delete]
+      }
+      # Read access to everyone else
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  event: Event! @hasOne
+  displayOrder: Int!
 }
 
 enum EventStatus {
   PENDING
   APPROVED
   REJECTED
+}
+
+enum EventType {
+  NEWS
+  EVENT
+  ANNOUNCEMENT
+  OTHER
 }

@@ -11,9 +11,10 @@ export const createEvent = /* GraphQL */ `
       title
       content
       status
+      type
       creator {
         id
-        name
+        username
         createdAt
         updatedAt
         owner
@@ -37,9 +38,10 @@ export const updateEvent = /* GraphQL */ `
       title
       content
       status
+      type
       creator {
         id
-        name
+        username
         createdAt
         updatedAt
         owner
@@ -63,9 +65,10 @@ export const deleteEvent = /* GraphQL */ `
       title
       content
       status
+      type
       creator {
         id
-        name
+        username
         createdAt
         updatedAt
         owner
@@ -86,7 +89,7 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
-      name
+      username
       events {
         nextToken
         __typename
@@ -105,7 +108,7 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
-      name
+      username
       events {
         nextToken
         __typename
@@ -124,7 +127,7 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
-      name
+      username
       events {
         nextToken
         __typename
@@ -132,6 +135,87 @@ export const deleteUser = /* GraphQL */ `
       createdAt
       updatedAt
       owner
+      __typename
+    }
+  }
+`;
+export const createShowcasedEvent = /* GraphQL */ `
+  mutation CreateShowcasedEvent(
+    $input: CreateShowcasedEventInput!
+    $condition: ModelShowcasedEventConditionInput
+  ) {
+    createShowcasedEvent(input: $input, condition: $condition) {
+      id
+      event {
+        id
+        title
+        content
+        status
+        type
+        createdAt
+        updatedAt
+        userEventsId
+        creatorId
+        __typename
+      }
+      displayOrder
+      createdAt
+      updatedAt
+      showcasedEventEventId
+      __typename
+    }
+  }
+`;
+export const updateShowcasedEvent = /* GraphQL */ `
+  mutation UpdateShowcasedEvent(
+    $input: UpdateShowcasedEventInput!
+    $condition: ModelShowcasedEventConditionInput
+  ) {
+    updateShowcasedEvent(input: $input, condition: $condition) {
+      id
+      event {
+        id
+        title
+        content
+        status
+        type
+        createdAt
+        updatedAt
+        userEventsId
+        creatorId
+        __typename
+      }
+      displayOrder
+      createdAt
+      updatedAt
+      showcasedEventEventId
+      __typename
+    }
+  }
+`;
+export const deleteShowcasedEvent = /* GraphQL */ `
+  mutation DeleteShowcasedEvent(
+    $input: DeleteShowcasedEventInput!
+    $condition: ModelShowcasedEventConditionInput
+  ) {
+    deleteShowcasedEvent(input: $input, condition: $condition) {
+      id
+      event {
+        id
+        title
+        content
+        status
+        type
+        createdAt
+        updatedAt
+        userEventsId
+        creatorId
+        __typename
+      }
+      displayOrder
+      createdAt
+      updatedAt
+      showcasedEventEventId
       __typename
     }
   }

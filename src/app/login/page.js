@@ -1,19 +1,36 @@
 "use client";
 
-import { Amplify } from "aws-amplify";
-import { withAuthenticator } from "@aws-amplify/ui-react";
+import { useState, useEffect } from "react";
+import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
+import { useRouter } from "next/navigation";
 
+import { Amplify } from "aws-amplify";
 import awsExports from "../../aws-exports";
 Amplify.configure(awsExports);
 
-function LoginPage({ signOut, user }) {
+export default function App() {
+  const [user, setUser] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/profile");
+    }
+  }, [user, router]);
+
   return (
-    <>
-      <h1>Hello {user.username}</h1>
-      <button onClick={signOut}>Sign out</button>
-    </>
+    <div className="flex flex-col min-h-screen mt-16">
+      <Authenticator>
+        {({ user: authUser }) => {
+          setUser(authUser);
+          return (
+            <div className="flex justify-center">
+              <h1>{authUser.username} Successfully Logged In</h1>
+            </div>
+          );
+        }}
+      </Authenticator>
+    </div>
   );
 }
-
-export default withAuthenticator(LoginPage);

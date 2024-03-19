@@ -9,14 +9,27 @@
       "UnauthRoleName": "amplify-awspractice-dev-10631-unauthRole",
       "StackName": "amplify-awspractice-dev-10631",
       "StackId": "arn:aws:cloudformation:us-east-1:315006293154:stack/amplify-awspractice-dev-10631/abc635e0-e4ed-11ee-94e9-1219141e2c0b",
-      "AmplifyAppId": "dg39m8plzjak9"
+      "AmplifyAppId": "dg39m8plzjak9",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-awspractice-dev-10631-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "api": {
-        "awspractice": {}
+        "awspractice": {},
+        "AdminQueries": {}
       },
       "auth": {
-        "awspractice9277f817": {}
+        "awspractice9277f817": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueriesafe375fa": {
+          "deploymentBucketName": "amplify-awspractice-dev-10631-deployment",
+          "s3Key": "amplify-builds/AdminQueriesafe375fa-61664b61346374524855-build.zip"
+        },
+        "awspractice9277f817PostConfirmation": {
+          "deploymentBucketName": "amplify-awspractice-dev-10631-deployment",
+          "s3Key": "amplify-builds/awspractice9277f817PostConfirmation-386d59724674344c6967-build.zip"
+        }
       }
     }
   }

@@ -1,6 +1,42 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      username
+      events {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const getEvent = /* GraphQL */ `
   query GetEvent($id: ID!) {
     getEvent(id: $id) {
@@ -8,9 +44,10 @@ export const getEvent = /* GraphQL */ `
       title
       content
       status
+      type
       creator {
         id
-        name
+        username
         createdAt
         updatedAt
         owner
@@ -36,6 +73,7 @@ export const listEvents = /* GraphQL */ `
         title
         content
         status
+        type
         createdAt
         updatedAt
         userEventsId
@@ -47,35 +85,43 @@ export const listEvents = /* GraphQL */ `
     }
   }
 `;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
+export const getShowcasedEvent = /* GraphQL */ `
+  query GetShowcasedEvent($id: ID!) {
+    getShowcasedEvent(id: $id) {
       id
-      name
-      events {
-        nextToken
+      event {
+        id
+        title
+        content
+        status
+        type
+        createdAt
+        updatedAt
+        userEventsId
+        creatorId
         __typename
       }
+      displayOrder
       createdAt
       updatedAt
-      owner
+      showcasedEventEventId
       __typename
     }
   }
 `;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
+export const listShowcasedEvents = /* GraphQL */ `
+  query ListShowcasedEvents(
+    $filter: ModelShowcasedEventFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listShowcasedEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
+        displayOrder
         createdAt
         updatedAt
-        owner
+        showcasedEventEventId
         __typename
       }
       nextToken

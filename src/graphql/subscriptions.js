@@ -1,6 +1,63 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser(
+    $filter: ModelSubscriptionUserFilterInput
+    $owner: String
+  ) {
+    onCreateUser(filter: $filter, owner: $owner) {
+      id
+      username
+      events {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser(
+    $filter: ModelSubscriptionUserFilterInput
+    $owner: String
+  ) {
+    onUpdateUser(filter: $filter, owner: $owner) {
+      id
+      username
+      events {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser(
+    $filter: ModelSubscriptionUserFilterInput
+    $owner: String
+  ) {
+    onDeleteUser(filter: $filter, owner: $owner) {
+      id
+      username
+      events {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
 export const onCreateEvent = /* GraphQL */ `
   subscription OnCreateEvent(
     $filter: ModelSubscriptionEventFilterInput
@@ -11,9 +68,10 @@ export const onCreateEvent = /* GraphQL */ `
       title
       content
       status
+      type
       creator {
         id
-        name
+        username
         createdAt
         updatedAt
         owner
@@ -37,9 +95,10 @@ export const onUpdateEvent = /* GraphQL */ `
       title
       content
       status
+      type
       creator {
         id
-        name
+        username
         createdAt
         updatedAt
         owner
@@ -63,9 +122,10 @@ export const onDeleteEvent = /* GraphQL */ `
       title
       content
       status
+      type
       creator {
         id
-        name
+        username
         createdAt
         updatedAt
         owner
@@ -79,59 +139,80 @@ export const onDeleteEvent = /* GraphQL */ `
     }
   }
 `;
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
+export const onCreateShowcasedEvent = /* GraphQL */ `
+  subscription OnCreateShowcasedEvent(
+    $filter: ModelSubscriptionShowcasedEventFilterInput
   ) {
-    onCreateUser(filter: $filter, owner: $owner) {
+    onCreateShowcasedEvent(filter: $filter) {
       id
-      name
-      events {
-        nextToken
+      event {
+        id
+        title
+        content
+        status
+        type
+        createdAt
+        updatedAt
+        userEventsId
+        creatorId
         __typename
       }
+      displayOrder
       createdAt
       updatedAt
-      owner
+      showcasedEventEventId
       __typename
     }
   }
 `;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
+export const onUpdateShowcasedEvent = /* GraphQL */ `
+  subscription OnUpdateShowcasedEvent(
+    $filter: ModelSubscriptionShowcasedEventFilterInput
   ) {
-    onUpdateUser(filter: $filter, owner: $owner) {
+    onUpdateShowcasedEvent(filter: $filter) {
       id
-      name
-      events {
-        nextToken
+      event {
+        id
+        title
+        content
+        status
+        type
+        createdAt
+        updatedAt
+        userEventsId
+        creatorId
         __typename
       }
+      displayOrder
       createdAt
       updatedAt
-      owner
+      showcasedEventEventId
       __typename
     }
   }
 `;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
+export const onDeleteShowcasedEvent = /* GraphQL */ `
+  subscription OnDeleteShowcasedEvent(
+    $filter: ModelSubscriptionShowcasedEventFilterInput
   ) {
-    onDeleteUser(filter: $filter, owner: $owner) {
+    onDeleteShowcasedEvent(filter: $filter) {
       id
-      name
-      events {
-        nextToken
+      event {
+        id
+        title
+        content
+        status
+        type
+        createdAt
+        updatedAt
+        userEventsId
+        creatorId
         __typename
       }
+      displayOrder
       createdAt
       updatedAt
-      owner
+      showcasedEventEventId
       __typename
     }
   }

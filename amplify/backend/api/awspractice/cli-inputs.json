@@ -4,14 +4,17 @@
     "apiName": "awspractice",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 7
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authawspractice9277f817"
     },
     "additionalAuthTypes": [
       {
-        "mode": "AMAZON_COGNITO_USER_POOLS",
-        "cognitoUserPoolId": "authawspractice9277f817"
+        "mode": "API_KEY",
+        "expirationTime": 365,
+        "apiKeyExpirationDate": "2025-03-19T17:03:42.296Z",
+        "keyDescription": "public access"
       }
-    ]
+    ],
+    "conflictResolution": {}
   }
 }
