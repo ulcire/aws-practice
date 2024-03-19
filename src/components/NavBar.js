@@ -15,7 +15,6 @@ const NavBar = () => {
   const dropdownRef = useRef(null);
   const router = useRouter();
 
-  // refresh on route change or page refresh
   useEffect(() => {
     currentAuthenticatedUser();
   }, [refresh]);
@@ -85,6 +84,7 @@ const NavBar = () => {
       setUserId(null);
       await signOut();
       router.push("/");
+      location.reload();
     } catch (error) {
       console.log("error signing out: ", error);
     }
